@@ -16,14 +16,14 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
   id2: number;
-
+  size:number;
   constructor(private heroService: HeroService,
               private router: Router,) { }
 
   getHeroes(): void {
     this.heroService.getHeroes().then((heroes) => {
       this.heroes = heroes;
-      console.log(heroes);
+      console.log(heroes);this.size=heroes.length;
     }).catch((e)=> console.log(e));
   }
 
@@ -47,6 +47,24 @@ export class HeroesComponent implements OnInit {
   this.router.navigate(['/detail', 
   this.selectedHero.id]);
 }
+    add(name: string,cargo:string,edad:number): void {
+      this.heroService.create(name,cargo,edad)
+      .then(hero => {
+      this.heroes.push(hero);
+      this.selectedHero = null;
+    });
+}
+    delete(hero: Hero): void {
+      this.heroService
+      .delete(hero.id)
+      .then(() => {
+      this.heroes = this.heroes.filter(h => h !== hero);
+      if (this.selectedHero === hero) { this.selectedHero = null; }
+      });
    
-    
+  }
+  newEmp(): void {
+  this.router.navigate(['/new', 
+  this.size]);
+  }
 }

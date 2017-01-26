@@ -11,7 +11,10 @@
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "electron": "electron app"
   },
   "keywords": [],
   "author": "",
@@ -25,18 +28,27 @@
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-browser-dynamic": "~2.4.0",
     "@angular/router": "~3.4.0",
-
     "angular-in-memory-web-api": "~0.2.4",
-    "systemjs": "0.19.40",
     "core-js": "^2.4.1",
+    "ng2-uploader": "^2.0.0",
     "rxjs": "5.0.1",
-    "zone.js": "^0.7.4"
+    "systemjs": "0.19.40",
+    "zone.js": "^0.7.4",
+    "angular2": "2.0.0-beta.0",
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.0",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "0.1.2"
   },
   "devDependencies": {
+     "electron-prebuilt": "^0.35.4",
+    "es6-shim": "^0.34.0",
+    "ts-loader": "^0.7.2",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0",
     "concurrently": "^3.1.0",
     "lite-server": "^2.2.2",
     "typescript": "~2.0.10",
-
     "canonical-path": "0.0.2",
     "http-server": "^0.9.0",
     "tslint": "^3.15.1",
@@ -49,7 +61,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~4.0.14",
     "rimraf": "^2.5.4",
-
     "@types/node": "^6.0.46",
     "@types/jasmine": "^2.5.36"
   },
