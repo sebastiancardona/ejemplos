@@ -30,7 +30,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.jws.WebService;
-//import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 //import javax.ws.rs.PathParam;
 
@@ -41,74 +41,7 @@ public class JSONService {
 	private static final String SUCCESS_RESULT="<result>success</result>";
 	private static final String FAILURE_RESULT="<result>failure</result>";
 	 CountryService countryService=new CountryService();  
-	/*@GET
-	@Path("/buscar")
-	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Empleado> getListEmp() {
-		System.out.println("Sebas");
-		return empDao.getAllUsers();
-	}
 	
-	@GET
-	@Path("/buscar/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Empleado getEmp(@PathParam(value = "id") int id) {
-		//int id2 = Integer.parseInt(id);
-		System.out.println(id);
-		return empDao.getUser(id);
-		
-	}
-	
-	 @PUT
-	   @Path("/buscar")
-	   @Produces(MediaType.APPLICATION_JSON)
-	   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	   public String updateUser(@FormParam("id") int id,
-	      @FormParam("nombre") String name,
-	      @FormParam("cargo") String cargo,
-	      @FormParam("edad") int edad,
-	      @Context HttpServletResponse servletResponse) throws IOException{
-	      Empleado user = new Empleado(id, name, cargo,edad);
-	      int result = empDao.updateUser(user);
-	      if(result == 1){
-	    	  return SUCCESS_RESULT;
-	      }
-	      return FAILURE_RESULT;
-	   }
-	 
-	 
-	   @POST
-	   @Path("/buscar")
-	   @Produces(MediaType.APPLICATION_XML)
-	   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	   public String createUser(@FormParam("id") int id,
-		  @FormParam("nombre") String name,
-		  @FormParam("cargo") String cargo,
-		  @FormParam("edad") int edad,
-	      @Context HttpServletResponse servletResponse) throws IOException{
-		  Empleado user = new Empleado(id, name, cargo,edad);
-	      int result = empDao.addUser(user);
-	      if(result == 1){
-	         return SUCCESS_RESULT;
-	      }
-	      return FAILURE_RESULT;
-	   }
-
-	  
-
-	   @DELETE
-	   @Path("/buscar/{userid}")
-	   @Produces(MediaType.APPLICATION_XML)
-	   public String deleteUser(@PathParam("userid") int userid){
-	      int result = empDao.deleteUser(userid);
-	      if(result == 1){
-	         return SUCCESS_RESULT;
-	      }
-	      return FAILURE_RESULT;
-	   }	*/
-	   
-	  
-	   
 	    @GET  
 	    @Produces(MediaType.APPLICATION_JSON)  
 	 public ArrayList<Empleado> getCountries()  
@@ -125,7 +58,14 @@ public class JSONService {
 	 {  
 	  return countryService.getCountry(id);  
 	 }  
-	      
+	    @GET  
+	    @Path("delete/{id}")  
+	    @Produces(MediaType.APPLICATION_JSON)  
+	 public void delete(@PathParam("id") int id)  
+	 {  
+	  countryService.deleteCountry(id);
+	 }  
+	     
 	    @POST  
 	    @Produces(MediaType.APPLICATION_JSON)  
 	 public Empleado addCountry(Empleado country)  
@@ -139,17 +79,25 @@ public class JSONService {
 	 {  
 	  return countryService.updateCountry(country);  
 	    
-	 }    
+	 } 
+	    @PUT 
+	    @Path("saveImg") 
+	    @Produces(MediaType.APPLICATION_JSON)  
+	 public void updateImg()  
+	 {  
+	  //return countryService.updateCountry(country);  
+	    System.out.println("llegamos al metodo");
+	 } 
 	    
 	    
-	 @DELETE  
+	 /*@DELETE  
 	 @Path("/{id}")  
 	 @Produces(MediaType.APPLICATION_JSON)  
 	 public void deleteCountryD(@PathParam("id") int id)  
 	 {  
 	   countryService.deleteCountry(id);  
 	    
-	 }  
+	 }  */
 
 	
 }

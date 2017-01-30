@@ -16,7 +16,8 @@ import javax.swing.ImageIcon;
 public class CountryService {  
   
  static HashMap<Integer,Empleado> countryIdMap=getCountryIdMap();  
- String route="http://localhost:8080/Restff/src/images/defaultImg.png" ;
+ String route="http://localhost:8080/project/images/defaultImg.png" ;
+ //String route="images/defaultImg.png" ;
  Image imagenExterna = new ImageIcon(route).getImage();
 
   
