@@ -11,7 +11,8 @@ import { Hero } from './hero';
 export class HeroService {
     private heroesUrl = 'http://localhost:8080/Restff/rest/empleado';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
-    
+    private headersFile = new Headers({'Content-Type': 'application/octet-stream'});
+
     constructor(private http: Http) { }
 
     getHeroes(): Promise<Hero[]> {
@@ -27,16 +28,21 @@ export class HeroService {
             .then(response => response.json() as Hero)
             .catch(this.handleError);
     }
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
+    
     update(hero: Hero): Promise<Hero> {
         const url = `${this.heroesUrl}`;
         return this.http
             .put(url, JSON.stringify(hero), {headers: this.headers})
             .toPromise()
             .then(() => hero)
+            .catch(this.handleError);
+    }
+    saveImg(img:File,hero:Hero): Promise<Hero> {
+        const url = `${this.heroesUrl}/saveImg`;
+        return this.http
+            .put(url, img, {headers: this.headersFile})
+            .toPromise()
+            .then(() => img)
             .catch(this.handleError);
     }
 
@@ -54,6 +60,12 @@ export class HeroService {
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
+    }
+
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
     }
     
 }

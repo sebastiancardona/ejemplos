@@ -16,7 +16,7 @@ import { HeroService } from './hero.service';
 })
 export class HeroNewComponent implements OnInit {
     
-    hero={id: 1, name: '',cargo:'',edad:0}
+    hero={id: 1, name: '',cargo:'',edad:0,img:"images/defaultImg.png"}
     id: number;
     constructor(
         private heroService: HeroService,

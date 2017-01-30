@@ -1,20 +1,24 @@
 package com.mkyong;
 
-public class  Empleado {
+import java.io.Serializable;
+
+public class  Empleado implements Serializable {
 	int id;
 	String name;
 	String cargo;
 	int edad;
-
+	String img;
+	
 	public Empleado(){
 		
 		
 	}
-	public Empleado(int id,String name, String cargo,int edad){
+	public Empleado(int id,String name, String cargo,int edad,String img){
 		this.id = id;
 		this.name = name;
 		this.cargo = cargo;
 		this.edad = edad;
+		this.img = img;
 	}
 	
 	public int getId() {
@@ -40,6 +44,12 @@ public class  Empleado {
 	}
 	public void setEdad(int edad) {
 		this.edad = edad;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 

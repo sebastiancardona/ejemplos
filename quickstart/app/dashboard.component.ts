@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     //promesa y cuando responde asigna el arreglo 
     //slice parte el arreglo
     //con las llaves hace varias acciones
-      .then(heroes => {this.heroes = heroes.slice(1, 5);
+      .then(heroes => {this.heroes = heroes;
       console.log(heroes);
     }).catch((e)=> console.log(e));
   }

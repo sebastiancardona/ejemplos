@@ -3,4 +3,5 @@ export class Hero {
   name: string;
   cargo: string;
   edad: number;
+  img:string;
 }
